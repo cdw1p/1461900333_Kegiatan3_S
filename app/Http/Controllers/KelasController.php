@@ -2,31 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Siswa;
+use App\Models\Kelas;
 use Illuminate\Http\Request;
 
 class KelasController extends Controller
 {
   public function index() {
-    $mahasiswa = Siswa::all();
-    return view('main_0333' , ['mahasiswa' => $mahasiswa]);
-  }
-
-  public function create() {
-  }
-
-  public function store() {
-  }
-
-  public function show() {
-  }
-
-  public function edit() {
-  }
-
-  public function update() {
-  }
-
-  public function destroy($id) {
+    $query = Kelas::select('siswa.id', 'siswa.nama as nama_siswa', 'siswa.alamat', 'guru.nama as nama_guru', 'guru.mengajar')
+      ->join('siswa', 'kelas.id_siswa', '=', 'siswa.id')
+      ->join('guru', 'kelas.id_guru', '=', 'guru.id')
+      ->get();
+    return view('kelas_0333', ['data' => $query]);
   }
 }
