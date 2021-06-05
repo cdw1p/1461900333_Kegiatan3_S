@@ -22,8 +22,8 @@
 	<div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
 		<div class="navbar-nav">
 			<a href="/siswa" class="nav-item nav-link">Siswa</a>
-			<a href="/kelas" class="nav-item nav-link">Kelas</a>
 			<a href="/guru" class="nav-item nav-link">Guru</a>
+			<a href="/kelas" class="nav-item nav-link">Kelas</a>
     </div>
 	</div>
 </nav>

@@ -28,8 +28,13 @@ Route::get('/siswa/edit/{id}', 'SiswaController@edit')->name('siswa.edit');
 Route::post('/siswa/edit/{id}', 'SiswaController@update')->name('siswa.update');
 Route::get('/siswa/delete/{id}', 'SiswaController@delete')->name('siswa.delete');
 
-// Modul Kelas
-Route::get('/kelas', 'KelasController@index')->name('kelas.index');
-
 // Modul Guru
 Route::get('/guru', 'GuruController@index')->name('guru.index');
+Route::get('/guru/create', 'GuruController@create')->name('guru.create');
+Route::post('/guru/create', 'GuruController@store')->name('guru.store');
+Route::get('/guru/edit/{id}', 'GuruController@edit')->name('guru.edit');
+Route::post('/guru/edit/{id}', 'GuruController@update')->name('guru.update');
+Route::get('/guru/delete/{id}', 'GuruController@delete')->name('guru.delete');
+
+// Modul Kelas
+Route::get('/kelas', 'KelasController@index')->name('kelas.index');

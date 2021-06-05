@@ -2,31 +2,40 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Siswa;
+use App\Models\Guru;
 use Illuminate\Http\Request;
 
 class GuruController extends Controller
 {
   public function index() {
-    $mahasiswa = Siswa::all();
-    return view('main_0333' , ['mahasiswa' => $mahasiswa]);
+    return view('guru_0333', ['data' => Guru::all()]);
   }
 
-  public function create() {
+  public function create(Request $request) {
+    return view('guru_create_0333');
   }
 
-  public function store() {
+  public function edit(Request $request) {
+    $findData = Guru::findOrFail($request->id);
+    if ($findData) {
+      return view('guru_edit_0333', ['data' => $findData]);
+    } else {
+      return redirect()->route('guru.index');
+    }
   }
 
-  public function show() {
+  public function store(Request $request) {
+    Guru::create([ 'nama' => $request->inputName, 'mengajar' => $request->inputTech ]);
+    return redirect()->route('guru.index');
   }
 
-  public function edit() {
+  public function update(Request $request) {
+    Guru::findOrFail($request->id)->update([ 'nama' => $request->inputName, 'mengajar' => $request->inputTech ]);
+    return redirect()->route('guru.index');
   }
 
-  public function update() {
-  }
-
-  public function destroy($id) {
+  public function delete(Request $request) {
+    Guru::findOrFail($request->id)->delete();
+    return redirect()->route('guru.index');
   }
 }
