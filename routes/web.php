@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\KelasController;
@@ -19,6 +18,7 @@ use App\Http\Controllers\GuruController;
 */
 
 Route::get('/', 'WelcomeController@index')->name('welcome.index');
+Route::post('/', 'WelcomeController@find')->name('welcome.find');
 
 // Modul Siswa
 Route::get('/siswa', 'SiswaController@index')->name('siswa.index');
